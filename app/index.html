@@ -5,7 +5,7 @@
 	<!--headscriptToken-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Order Cloud</title>
+    <title>Order Approvals</title>
 	<link rel="stylesheet" href="css/bootstrap-451.css" data-group="source" />
 	<link rel="stylesheet" href="css/editor.css" data-group="source" />
 	<link rel="stylesheet" href="css/theme.css" data-group="source" />
@@ -33,22 +33,35 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 <body ng-cloak ng-class="ng-cloak">
 <section>
+
     <section ng-hide="Four51User.isAuthenticated() || isAnon" class="container">
         <login />
     </section>
+
     <section ng-if="Four51User.isAuthenticated()" id="content">
+
         <section class="hidden-print">
             <navigation />
         </section>
+
+        <section class="hidden-print">
+            <hamburgernavigation />
+        </section>
+
         <section class="hidden-print">
             <branding />
         </section>
+
         <section class="container-view">
             <ng-view autoscroll />
         </section>
-        <section class="hidden-print">
+
+        <fixedfooter></fixedfooter>
+
+        <!--<section class="hidden-print">
             <copyright ng-if="!user.Permissions.contains('UnBrandedSite')" />
-        </section>
+        </section>-->
+
     </section>
 </section>
 
@@ -72,6 +85,11 @@
     <script src="lib/angular/plugins/Debouncer.js" data-group="resources"></script>
     <script src="lib/angular/plugins/ngAutocomplete.js" data-group="resources"></script>
     <script src="lib/oc/anonRouter.js" data-group="resources"></script>
+
+    <script src="lib/oc/hamburgerNavigation.js" data-group="resources"></script>
+    <script src="lib/oc/fixedFooter.js" data-group="resources"></script>
+    <script src="lib/oc/securityModal.js" data-group="resources"></script>
+    <script src="lib/oc/termsModal.js" data-group="resources"></script>
 
     <script src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
