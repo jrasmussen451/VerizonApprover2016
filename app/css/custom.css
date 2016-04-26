@@ -1,0 +1,115 @@
+/*
+Static file for Theme changes
+Theme name: Approvals 2016
+Version: 1.0
+Template: Approvals
+Created: 2/25/16
+Last Updated: 4/26/16
+*/
+
+.btn-date {
+    margin:0;
+    height:40px;
+    padding-top:8px;
+}
+
+/*login*/
+.order-cloud-image {
+    background: url('images/orderCloud.jpg') center center fixed;
+}
+
+/*nav*/
+.navbar .container .navbar-nav.pull-right li a i:first-of-type,
+.navbar .container-view .navbar-nav.pull-right li a i:first-of-type {
+    border: 0 none;
+}
+
+.navbar.navbar-inner .navbar-header {
+    margin-right:72px;
+}
+
+.navbar.navbar-inner .navbar-header a {
+    padding-left:15px;
+}
+/*nav*/
+
+/*approvals*/
+.approval-list-view .btn-default {
+    height:40px;
+    width:30px;
+}
+
+.approval-list-view .btn-default .view-form-icon i  {
+    width:15px;
+}
+
+.approval-list-view h3 {
+    margin-top:0;
+}
+
+.cost-summary hr {
+    border-top-color: #DDDDDD;
+    display:none;
+}
+
+.quantity-total {
+    border: 1px solid #ddd;
+}
+
+.approval-order-view .row {
+    padding:5px 15px;
+}
+
+.approval-order-view .list-group-item {
+    padding:7px 10px;
+}
+
+.approval-order-view .btn-warning {
+    margin-bottom:15px;
+}
+
+.date-badge {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    width: 70px;
+}
+
+.date-badge > div:last-of-type {
+    border-top: 1px dashed #ddd;
+}
+
+.date-badge > div {
+    cursor: default;
+    font-size: 0.8em;
+    padding: 5px 0;
+}
+/*approvals*/
+
+/*cart*/
+.cart-view select.cost-center {
+    padding-left: 25px;
+}
+
+.cart-view .navbar-fixed-bottom .alert-warning.text-center {
+    padding: 10px;
+}
+/*cart*/
+
+/*kits*/
+.kit-view .clear {
+    clear:both;
+}
+
+.kit-view .product-variants .alert-success.text-center {
+    padding:5px 2px;
+}
+/*kits*/
+
+/*admin*/
+.user-view .panel-footer .view-inline-error {
+    text-align:left;
+}
