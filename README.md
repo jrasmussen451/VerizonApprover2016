@@ -1,6 +1,6 @@
-#### Approver Application / 18.12.0 CT Release (0715)
-###### Created: 2/16/16
-###### Last Updated: 4/11/16
+#### VerizonApprover2016 / 18.12.0 CT Release (0715)
+###### Created: 4/26/16
+###### Last Updated: 4/26/16
 ======== 
 
 ##### Developers
@@ -13,7 +13,7 @@ Four51: Jen R.
 * The order date will be the date approved
 * 
 
-
+##### Fonts
 
 ##### Modified Files
 `index.html` 
