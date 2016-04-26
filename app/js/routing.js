@@ -10,7 +10,7 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
     }
 
     $routeProvider.
-        when('/listOrders', { templateUrl: 'partials/listOrders.html', controller: 'ListOrdersCtrl' }).
+        /*when('/listOrders', { templateUrl: 'partials/listOrders.html', controller: 'ListOrdersCtrl' }).
         when('/orderdetails/:orderid', {templateUrl: 'partials/orderDetails.html', controller: 'OrderDetailsCtrl'}).
         when('/catalog', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
         when('/catalog/:categoryInteropID', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
@@ -45,8 +45,10 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
         when('/reports', { templateUrl: 'partials/reportsView.html', controller: 'ReportsCtrl' }).
         when('/report/:id', { templateUrl: 'partials/Reporting/reportView.html', controller: 'ReportCtrl' }).
         when('/contactus', { templateUrl: 'partials/Messages/contactus.html' }).
-        /*otherwise({redirectTo: '/catalog'});*/
+        otherwise({redirectTo: '/catalog'});*/
 
+        when('/login', { templateUrl: 'partials/controls/login.html', controller: 'LoginCtrl' }).
+        when('/admin', { templateUrl: 'partials/userView.html', controller: 'UserEditCtrl' }).
         when('/orders', { templateUrl: 'partials/Approvals/approvalView.html', controller: 'OrderApprovalSearchCtrl' }).
         otherwise({redirectTo: '/orders'});
 }]);
