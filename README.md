@@ -7,13 +7,68 @@
 Four51: Jen R.
 
 ##### Github URL 
-* //github.com/jrasmussen451/Approver
+* //github.com/Four51Repositories/VerizonApprover
 
 ##### Notes
 * The order date will be the date approved
 * 
 
-##### Fonts
+========
+
+### Images
+`css/images/custom/` 
+* css/images/custom/background.jpg
+* css/images/logo.png
+
+========
+
+### Fonts
+`css/fonts` 
+* NHaasGroteskDSPro-55Rg.otf
+* NHaasGroteskDSPro-75Bd.otf
+* NHaasGroteskTXPro-55Rg.otf
+* NHaasGroteskTXPro-75Bd.otf
+
+======== 
+
+### OrderCloud Custom Solutions
+
+
+###### Hamburger Navigation
+`lib/oc/hamburgerNavigation.js`
+
+**Instructions**
+* Follow instructions under Custom Solutions Library - Hamburger Navigation Subcategories
+`https://github.com/Four51Repositories/CustomSolutions/tree/master/Hamburger%20Navigation%20Subcategories`
+
+========
+
+###### Fixed Footer
+`lib/oc/fixedFooter.js`
+
+**Instructions**
+* Follow instructions under Custom Solutions Library - Fixed Footer
+`https://github.com/Four51Repositories/CustomSolutions/tree/master/Fixed%20Footer`
+
+========
+
+###### Security Modal
+`lib/oc/securityModal.js`
+
+**Instructions**
+* Follow instructions under Custom Solutions Library - Security Modal
+`https://github.com/Four51Repositories/CustomSolutions/tree/master/Security%20Modal`
+
+========
+
+###### Terms Modal
+`lib/oc/termsModal.js`
+
+**Instructions**
+* Follow instructions under Custom Solutions Library - Terms Modal
+`https://github.com/Four51Repositories/CustomSolutions/tree/dev/Terms%20Modal`
+
+========
 
 ##### Modified Files
 `index.html` 

@@ -27,17 +27,17 @@ body a  {color: #0066cc;}
 .btn-primary, .btn-primary:hover  {color: #FFFFFF;}
 .btn-primary  {border-color: #333;}
 .btn-primary:hover  {background-color: #A80309;}
-.btn-default  {background-color: #FFFFFF;}
-.btn-default, .btn-default:hover  {color: #333333;}
-.btn-default  {border-color: #CCCCCC;}
-.btn-default:hover  {background-color: #EBEBEB;}
+.btn-default  {background-color: #333;}
+.btn-default, .btn-default:hover  {color: #FFF;}
+.btn-default  {border-color: #333;}
+.btn-default:hover  {background-color: #2d2d2d;}
 .btn-info  {background-color: #7a0000;}
 .btn-info, .btn-info:hover  {color: #FFFFFF;}
-.btn-info  {border-color: #6b0000;}
+.btn-info  {border-color: #7a0000;}
 .btn-info:hover  {background-color: #660000;}
 .btn-success  {background-color: #5CB85C;}
 .btn-success, .btn-success:hover  {color: #FFFFFF;}
-.btn-success  {border-color: #4CAE4C;}
+.btn-success  {border-color: #5CB85C;}
 .btn-success:hover  {background-color: #47A447;}
 .btn-warning  {background-color: #FBD362;}
 .btn-warning, .btn-warning:hover  {color: #FFFFFF;}
