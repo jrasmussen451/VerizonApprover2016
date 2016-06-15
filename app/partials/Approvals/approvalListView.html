@@ -1,3 +1,7 @@
+<div class="text-center" ng-show="!selectedOrder && orderMessage">
+    <h4 class="text-success">{{orderMessage}}</h4>
+    <h4>Please select an {{'order' | rc}}</h4>
+</div>
 <section class="approval-list-view container">
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0">
@@ -49,7 +53,7 @@
         </div>
         <loadingindicator ng-show="orderLoadingIndicator" title="Please wait while we load your orders"></loadingindicator>
         <li ng-repeat="order in filteredOrders = (orders | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize)  | filter:keyword | orderBy : sortOption.Value : reverse">
-            <div ng-click="viewOrder(order); changeStep(1);" ng-class="{'active': order.ExternalID == selectedOrder.ExternalID}">
+            <div class="order-select-wrapper" ng-click="viewOrder(order); changeStep(1);" ng-class="{'active': order.ExternalID == selectedOrder.ExternalID}">
                 <div class="row">
                     <div class="col-xs-3 text-center">
                         <div class="date-badge">

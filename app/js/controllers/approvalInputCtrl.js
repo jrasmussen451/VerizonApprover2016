@@ -1,52 +1,56 @@
-four51.app.controller('ApprovalInputCtrl', ['$scope', '$location', '$rootScope', 'Order', 'Address', function ($scope, $location, $rootScope, Order, Address) {
-	$scope.approveOrder = function() {
-		$scope.loadingIndicator = true;
-		Order.approve($scope.order,
-			function(data) {
-				$scope.order = data;
-				if ($scope.order.IsMultipleShip()) {
-					angular.forEach(data.LineItems, function(item) {
-						if (item.ShipAddressID) {
-							Address.get(item.ShipAddressID, function(add) {
-								item.ShipAddress = add;
-							});
-						}
-					});
+four51.app.controller('ApprovalInputCtrl', ['$scope', '$rootScope', '$location', 'Order',
+	function ($scope, $rootScope, $location, Order) {
+
+		$scope.approveOrder = function() {
+
+			$scope.loadingIndicator = true;
+			//$scope.order.ApprovalComment = $scope.ApprovalComment;
+
+			Order.approve($scope.order,
+				function(data) {
+					$scope.order = data;
+					$scope.loadingIndicator = false;
+					$rootScope.$broadcast('event:approvalComplete', 'approve');
+				},
+				function(ex) {
+					$scope.loadingIndicator = false;
+					$scope.error = ex.Detail;
 				}
-				else {
-					Address.get(data.ShipAddressID || data.LineItems[0].ShipAddressID, function(add) {
-						data.ShipAddress = add;
-					});
+			);
+		};
+
+		$scope.declineOrder = function() {
+
+			$scope.loadingIndicator = true;
+			$scope.order.ApprovalComment = $scope.ApprovalComment;
+
+			Order.decline($scope.order,
+				function(data) {
+					$scope.order = data;
+					$scope.loadingIndicator = false;
+					$rootScope.$broadcast('event:approvalComplete', 'decline');
+				},
+				function(ex) {
+					$scope.loadingIndicator = false;
+					$scope.error = "An error occurred while processing.";
 				}
+			);
+		};
 
-				Address.get(data.BillAddressID, function(add){
-					data.BillAddress = add;
-				});
-				$scope.loadingIndicator = false;
-			},
-			function(ex) {
-				$scope.loadingIndicator = false;
-				$scope.error = ex.Detail;
+		$scope.editOrder = function(order) {
+			$scope.order = order;
+			//$scope.loadingIndicator = true;
+			if ($scope.order) {
+				$location.path('cart/' + $scope.order.ID);
 			}
-		);
-	}
+		};
 
-	$scope.declineOrder = function() {
-		$scope.loadingIndicator = true;
-		Order.decline($scope.order,
-			function(data) {
-				$scope.order = data;
-				$scope.loadingIndicator = false;
-			},
-			function(ex) {
-				$scope.loadingIndicator = false;
-				$scope.error = "An error occurred while processing.";
-			}
-		);
-	}
+		$scope.commentToggle = false;
+		$scope.toggleComments = function(){
+			$scope.commentToggle = !$scope.commentToggle;
+		};
 
-	$scope.editOrder = function() {
-		$scope.loadingIndicator = true;
-		$location.path('cart/' + $scope.order.ID);
-	}
-}]);
+		$scope.$on('event:changeStep', function(){
+			$scope.commentToggle = false;
+		});
+	}]);

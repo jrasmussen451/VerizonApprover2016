@@ -87,6 +87,7 @@ four51.app.controller('OrderApprovalSearchCtrl', ['$scope', '$location', 'OrderS
             $scope.selectedOrder = null;
             $scope.settings.currentPage = 1;
             $scope.orderMessage = (type == 'approve') ? 'Order approved successfully' : 'Order declined successfully';
+            $scope.changeStep(0);
             getOrdersAwaitingApproval($scope.settings.currentPage);
         });
 

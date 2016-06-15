@@ -1,9 +1,3 @@
-<div class="text-center text-success" ng-show="!selectedOrder">
-    <h2>{{orderMessage}}</h2>
-</div>
-<div class="text-center" ng-show="!selectedOrder">
-    <h2>Please select an {{'order' | rc}}</h2>
-</div>
 <section class="approval-order-view container" ng-show="selectedOrder">
     <loadingindicator ng-show="orderLoadingIndicator" title="Please wait while we fetch your order"></loadingindicator>
     <div class="row">
@@ -16,14 +10,14 @@
                         <div>{{selectedOrder.DateCreated | date:'EEEE'}}</div>
                     </div>
                 </div>
-                <div class="col-xs-9">
+                <div class="col-xs-8 col-xs-offset-1">
                     <h4 class="text-center">Order ID: <b>{{selectedOrder.ExternalID}}</b></h4>
                     <div class="row">
                         <div ng-class="{'col-sm-6': selectedOrder.CostCenter}">
                             <ul class="list-group">
                                 <li class="list-group-item text-center"><small><b>Payment Method</b></small></li>
                                 <li class="list-group-item text-center">
-                                    {{selectedOrder.PaymentMethodText}}<br ng-show="selectedOrder.CreditCard.Type">
+                                    <small>{{selectedOrder.PaymentMethodText}}</small><br ng-show="selectedOrder.CreditCard.Type">
                                     <small ng-show="selectedOrder.CreditCard.Type">{{selectedOrder.CreditCard.DisplayName}}</small>
                                 </li>
                             </ul>
@@ -38,7 +32,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <div class="btn btn-warning btn-block hidden-md hidden-lg" ng-click="changeStep(0)">Back to all {{'order' | r}}s</div>
+                <div class="btn btn-warning btn-block hidden-lg" ng-click="changeStep(0)">Back to all {{'order' | r}}s</div>
             </div>
             <div class="well">
                 <div class="row">
@@ -84,7 +78,7 @@
                         <h5><b>SHIPPING ADDRESS</b></h5>
                         <div class="row">
                             <address>
-                                <p class="text-right">
+                                <p class="text-right" ng-if="selectedOrder.LineItems[0].ShipFirstName || selectedOrder.ShipAddress.FirstName">
                                     {{(selectedOrder.LineItems[0].ShipFirstName || selectedOrder.ShipAddress.FirstName) + ' ' + (selectedOrder.LineItems[0].ShipLastName || selectedOrder.ShipAddress.LastName)}}
                                 </p>
                                 <p class="text-right">{{selectedOrder.ShipAddress.CompanyName}}</p>
@@ -149,10 +143,10 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-12" >
                                 <a ng-click="viewLineItem(item); changeStep(2)">
-                                    <h3 class="text-primary">
+                                    <h4 class="text-primary">
                                         <i class="fa fa-eye"></i>
                                         {{item.ProductIDText}}
-                                    </h3>
+                                    </h4>
                                     <p>
                                         {{item.Product.Name}}
                                     </p>
@@ -212,7 +206,7 @@
                             </div>
                             <div class="col-md-8">
                                 <address class="well well-sm" collapse="!toggleShipping">
-                                    <p>{{(item.ShipFirstName || item.ShipAddress.FirstName) + ' ' + (item.ShipLastName || item.ShipAddress.LastName)}}</p>
+                                    <p ng-if="item.ShipFirstName || item.ShipAddress.FirstName">{{(item.ShipFirstName || item.ShipAddress.FirstName) + ' ' + (item.ShipLastName || item.ShipAddress.LastName)}}</p>
                                     <p>{{item.ShipAddress.CompanyName}}</p>
                                     <p>{{item.ShipAddress.Street1}}</p>
                                     <p>{{item.ShipAddress.Street2}}</p>
@@ -230,8 +224,7 @@
             <ng-include class="container" ng-class="{'ng-hide':viewToggle != 2}" src="'partials/Approvals/approvalOrderLineItemView.html'"></ng-include>
         </div>
     </div>
-    <div class="approval-buttons">
-        <div class="btn btn-block btn-warning hidden-md hidden-lg" ng-click="changeStep(0)">Back to all {{'order' | r}}s</div>
-        <approval ng-show="selectedOrder.Status == 'AwaitingApproval' && (selectedOrder.UserCanApprove || user.Permissions.contains('ApproveAllOrders'))" order="selectedOrder"></approval>
-    </div>
+    <button class="btn btn-block btn-warning visible-xs" ng-click="changeStep(0)">Back to all {{'order' | r}}s</button>
+    <approval ng-show="selectedOrder.Status == 'AwaitingApproval' && (selectedOrder.UserCanApprove || user.Permissions.contains('ApproveAllOrders'))" order="selectedOrder"></approval>
+
 </section>
