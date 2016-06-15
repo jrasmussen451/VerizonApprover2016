@@ -57,7 +57,7 @@ function hamburgernavigation() {
             '<li ng-class="{\'active\': isActive([\'orders\'])}">',
             '<a ng-click="retarget(\'orders\')">',
             '<i class="fa fa-clipboard"></i>',
-            '<span>{{\'Home\' | r}}</span>',
+            '<span>{{\'Orders\' | r}}</span>',
             '</a>',
             '</li>',
             //account

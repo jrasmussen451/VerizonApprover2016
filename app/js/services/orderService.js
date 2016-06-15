@@ -20,7 +20,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 
 		order.forceMultipleShip = function(value) {
 			_multipleShip = value;
-		}
+		};
+
 		order.IsMultipleShip = function() {
 			var multi = false;
 			if (_multipleShip && order.LineItems[0].ShipAddressID == null) return true;
@@ -31,7 +32,7 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 					false;
 			});
 			return multi;
-		}
+		};
 
 		// if kit line items ensure all are configured
 		angular.forEach(order.LineItems, function(li) {
@@ -104,7 +105,7 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 				error(Error.format(ex));
 			}
 		);
-	}
+	};
 
 	var _repeat = function(id, success, error) {
 		$resource($451.api('order/repeat/:id'), {'id': id}, { repeat: { method: 'PUT'}}).repeat().$promise.then(
@@ -120,7 +121,7 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 				error(Error.format(ex));
 			}
 		);
-	}
+	};
 
 	var _approve = function(order, success, error) {
 		$resource($451.api('order/approve/:id'), {'id': order.ID}, { approve: { method: 'PUT', params: { 'comment': order.ApprovalComment}}}).approve().$promise.then(
@@ -135,7 +136,7 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 				error(Error.format(ex));
 			}
 		);
-	}
+	};
 
 	var _decline = function(order, success, error) {
 		$resource($451.api('order/decline/:id'), {'id': order.ID}, { decline: { method: 'PUT', params: { 'comment': order.ApprovalComment}}}).decline().$promise.then(
@@ -150,7 +151,7 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 				error(Error.format(ex));
 			}
 		);
-	}
+	};
 
 	var _deletelineitem = function(id, lineitemid, success, error) {
 		store.remove('451Cache.Order.' + id);
