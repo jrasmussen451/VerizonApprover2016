@@ -1,6 +1,6 @@
-#### VerizonApprover2016 / 18.12.0 CT Release (0715)
+#### VerizonApprover2016 / 18.15.0 CT / 1.5.0 SPA Release (0316)
 ###### Created: 4/26/16
-###### Last Updated: 4/26/16
+###### Last Updated: 6/15/16
 ======== 
 
 ##### Developers

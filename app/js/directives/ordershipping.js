@@ -6,12 +6,15 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 			AddressList.clear();
 			AddressList.shipping(function(list) {
 				$scope.shipaddresses = list;
-                if (list.length == 1 && !$scope.currentOrder.ShipAddressID) {
-                    $scope.currentOrder.ShipAddressID = list[0].ID;
-                }
-				if ($scope.isEditforApproval) {
-					if (!AddressList.contains($scope.currentOrder.ShipAddress))
-						$scope.shipaddresses.push($scope.currentOrder.ShipAddress);
+
+				if ($scope.currentOrder) {
+					if (list.length == 1 && !$scope.currentOrder.ShipAddressID) {
+						$scope.currentOrder.ShipAddressID = list[0].ID;
+					}
+					if ($scope.isEditforApproval) {
+						if (!AddressList.contains($scope.currentOrder.ShipAddress))
+							$scope.shipaddresses.push($scope.currentOrder.ShipAddress);
+					}
 				}
 			});
 			$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: false };
@@ -41,10 +44,10 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 				var auto = $scope.currentOrder.autoID;
 				Order.save($scope.currentOrder,
 					function(data) {
-                        //Due to order save race condition, BillAddressID was being set to null
-                        var billAddressID = $scope.currentOrder.BillAddressID;
+						//Due to order save race condition, BillAddressID was being set to null
+						var billAddressID = $scope.currentOrder.BillAddressID;
 						$scope.currentOrder = data;
-                        $scope.currentOrder.BillAddressID = billAddressID;
+						$scope.currentOrder.BillAddressID = billAddressID;
 						$scope.displayLoadingIndicator = false;
 						if (auto) {
 							$scope.currentOrder.autoID = true;
@@ -121,9 +124,27 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 						}
 						$scope.orderShipAddress = add;
 					});
-                    if (!$scope.currentOrder.IsMultipleShip()) {
-                        $scope.setShipAddressAtOrderLevel();
-                    }
+					if (!$scope.currentOrder.IsMultipleShip()) {
+						$scope.setShipAddressAtOrderLevel();
+					}
+				}
+			});
+
+			$scope.$watch('currentOrder.LineItems[0].ShipFirstName', function(newValue) {
+				var shipFirstName = newValue;
+				if ($scope.currentOrder) {
+					angular.forEach($scope.currentOrder.LineItems, function(item) {
+						item.ShipFirstName = shipFirstName;
+					});
+				}
+			});
+
+			$scope.$watch('currentOrder.LineItems[0].ShipLastName', function(newValue) {
+				var shipLastName = newValue;
+				if ($scope.currentOrder) {
+					angular.forEach($scope.currentOrder.LineItems, function(item) {
+						item.ShipLastName = shipLastName;
+					});
 				}
 			});
 
@@ -160,7 +181,7 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 				saveChanges(
 					function(order) {
 						Shipper.query(order, function(list) {
-							$scope.shippers = list;
+								$scope.shippers = list;
 								$scope.shippingFetchIndicator = false;
 							}
 						);
@@ -197,8 +218,8 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 						if (s.Name == li.ShipperName)
 							li.Shipper = s;
 					});
-					li.ShipperName = li.Shipper.Name;
-					li.ShipperID = li.Shipper.ID;
+					if (li.Shipper.Name) li.ShipperName = li.Shipper.Name;
+					if (li.Shipper.ID) li.ShipperID = li.Shipper.ID;
 					saveChanges(function() {
 						$scope.shippingUpdatingIndicator = false;
 						$scope.shippingFetchIndicator = false;
