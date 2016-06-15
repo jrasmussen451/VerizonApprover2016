@@ -10,7 +10,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	}
 
 	if (!$scope.currentOrder) {
-        $location.path('catalog');
+        $location.path('orders');
     }
 
 	$scope.hasOrderConfig = OrderConfig.hasConfig($scope.currentOrder, $scope.user);
@@ -30,7 +30,9 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	                $scope.displayLoadingIndicator = false;
 		        });
 		        $scope.currentOrder = null;
-		        $location.path('/order/' + data.ID);
+		        $location.path('/orders/' + data.ID);
+				//add for order list messaging
+				$rootScope.$broadcast('event:approvalComplete', 'approve');
 	        },
 	        function(ex) {
 		        $scope.errorMessage = ex.Message;
@@ -71,12 +73,12 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
         );
     };
 
-    $scope.continueShopping = function() {
+    /*$scope.continueShopping = function() {
 	    if (confirm('Do you want to save changes to your order before continuing?') == true)
 	        saveChanges(function() { $location.path('catalog') });
         else
 		    $location.path('catalog');
-    };
+    };*/
 
     $scope.cancelOrder = function() {
 	    if (confirm('Are you sure you wish to cancel your order?') == true) {
@@ -88,7 +90,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 			        User.save($scope.user, function(data) {
 				        $scope.user = data;
 				        $scope.displayLoadingIndicator = false;
-				        $location.path('catalog');
+				        $location.path('orders');
 			        });
 		        },
 		        function(ex) {
@@ -112,6 +114,6 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
     };
 
 	$scope.cancelEdit = function() {
-		$location.path('order');
+		$location.path('orders');
 	};
 }]);

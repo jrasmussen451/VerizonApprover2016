@@ -45,6 +45,10 @@ function ($scope, $sce, $route, $location, User) {
 					$scope.credentials.Username = null;
 					$scope.credentials.Password = null;
 				}
+				//custom - bug fixes
+				else{
+					$location.path('/orders');
+				}
 				delete $scope.credentials;
 			},
 			function(ex) {

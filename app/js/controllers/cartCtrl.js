@@ -22,14 +22,14 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 
 	$scope.currentDate = new Date();
 	$scope.errorMessage = null;
-	$scope.continueShopping = function() {
+	/*$scope.continueShopping = function() {
 		if (!$scope.cart.$invalid) {
 			if (confirm('Do you want to save changes to your order before continuing?') == true)
 				$scope.saveChanges(function() { $location.path('catalog') });
 		}
 		else
 			$location.path('catalog');
-	};
+	};*/
 
 	$scope.cancelOrder = function() {
 		if (confirm('Are you sure you wish to cancel your order?') == true) {
@@ -40,7 +40,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('catalog');
+						$location.path('orders');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -86,7 +86,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
-							$location.path('catalog');
+							$location.path('orders');
 						});
 					}
 					$scope.displayLoadingIndicator = false;
@@ -145,7 +145,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	};
 
 	$scope.cancelEdit = function() {
-		$location.path('order');
+		$location.path('orders');
 	};
 
     $scope.downloadProof = function(item) {
