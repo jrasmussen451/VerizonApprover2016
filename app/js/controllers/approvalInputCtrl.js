@@ -4,7 +4,7 @@ four51.app.controller('ApprovalInputCtrl', ['$scope', '$rootScope', '$location',
 		$scope.approveOrder = function() {
 
 			$scope.loadingIndicator = true;
-			//$scope.order.ApprovalComment = $scope.ApprovalComment;
+			$scope.order.ApprovalComment = $scope.ApprovalComment;
 
 			Order.approve($scope.order,
 				function(data) {
@@ -39,7 +39,6 @@ four51.app.controller('ApprovalInputCtrl', ['$scope', '$rootScope', '$location',
 
 		$scope.editOrder = function(order) {
 			$scope.order = order;
-			//$scope.loadingIndicator = true;
 			if ($scope.order) {
 				$location.path('cart/' + $scope.order.ID);
 			}
