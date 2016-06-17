@@ -26,13 +26,13 @@ function ($scope, $sce, $route, $location, User) {
 				delete $scope.PasswordReset;
 				delete $scope.credentials;
                 $scope.buttonText = "Logon";
-				$location.path('catalog');
+				$location.path('orders');
 			},
 			function(ex) {
 				$scope.loginMessage = $sce.trustAsHtml(ex.Message);
 			}
 		);
-	}
+	};
 
 	var _login = function() {
 		User.login($scope.credentials,
