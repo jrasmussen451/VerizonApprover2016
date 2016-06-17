@@ -9,9 +9,9 @@ function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, C
 	$scope.viewToggle = 0;
 
 	if ($451.isAnon && !Security.isAuthenticated()) {
-		/*User.login(function () {
+		User.login(function () {
 			$route.reload();
-		});*/
+		});
 	}
 
 	// fix Bootstrap fixed-top and fixed-bottom from jumping around on mobile input when virtual keyboard appears

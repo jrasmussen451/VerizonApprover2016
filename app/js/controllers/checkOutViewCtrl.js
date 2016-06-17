@@ -41,7 +41,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		        $scope.shippingFetchIndicator = false;
 	        }
         );
-    };
+    }
 
 	$scope.$watch('currentOrder.CostCenter', function() {
 		OrderConfig.address($scope.currentOrder, $scope.user);
@@ -71,7 +71,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		        $scope.shippingFetchIndicator = false;
 	        }
         );
-    };
+    }
 
     /*$scope.continueShopping = function() {
 	    if (confirm('Do you want to save changes to your order before continuing?') == true)
