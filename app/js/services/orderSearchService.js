@@ -28,11 +28,10 @@ four51.app.factory('OrderSearch', ['$resource', '$451', function($resource, $451
 				    cache[i] = list.List[i - (page - 1) * pagesize] || i;
 			    }
 
-				/*approver 2016*/
+				/*COMTOOLS-243*/
 				angular.forEach(list.List, function(order) {
 					order.FromUserName = order.FromUserFirstName + " " + order.FromUserLastName;
 				});
-				/*approver 2016*/
 
 			    _then(success, cache, list.Count);
 		    });
